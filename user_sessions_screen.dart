@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 
-import '../backend/firebase.dart';
-import '../frontend/ui.dart';
-import '../backend/app_localizations.dart';
+import 'firebase.dart';
+import 'ui.dart';
+import 'app_localizations.dart';
 
 class UserSessionsScreen extends StatefulWidget {
   const UserSessionsScreen({Key? key}) : super(key: key);

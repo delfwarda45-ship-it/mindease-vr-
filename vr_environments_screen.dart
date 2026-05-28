@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:provider/provider.dart';
-import '../frontend/ui.dart';
+import 'ui.dart';
 import 'environment.dart';
 import 'video_player_screen.dart';
-import '../backend/app_localizations.dart';
-import '../backend/language_provider.dart';
+import 'app_localizations.dart';
+import 'language_provider.dart';
 
 class VREnvironmentsScreen extends StatefulWidget {
   const VREnvironmentsScreen({Key? key}) : super(key: key);

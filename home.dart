@@ -2,9 +2,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../backend/firebase.dart';
-import '../backend/app_localizations.dart';
-import '../backend/language_provider.dart';
+import 'firebase.dart';
+import 'app_localizations.dart';
+import 'language_provider.dart';
 import 'ui.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -401,6 +401,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               const SizedBox(height: 24),
+              _buildFeatureTools(context),
+              const SizedBox(height: 24),
               AppUI.card(
                 padding: const EdgeInsets.all(20),
                 child: Column(
@@ -704,6 +706,110 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         bottomNavigationBar: _buildBottomNavBar(context),
+      ),
+    );
+  }
+
+  Widget _buildFeatureTools(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final languageCode = Provider.of<LanguageProvider>(context, listen: false)
+        .locale
+        .languageCode;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              l10n?.translate('quick_tools') ?? 'Quick Tools',
+              style: AppUI.headingMedium,
+            ),
+          ],
+        ),
+        const SizedBox(height: 12),
+        GridView.count(
+          crossAxisCount: 2,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          mainAxisSpacing: 12,
+          crossAxisSpacing: 12,
+          children: [
+            _buildToolCard(
+              context,
+              title: l10n?.translate('breathing_exercise') ?? 'Breathing Exercise',
+              subtitle: l10n?.translate('calm_your_mind') ?? 'Calm your mind with guided breathing',
+              icon: Icons.self_improvement,
+              color: AppUI.purplePrimary,
+              onTap: () => Navigator.pushNamed(context, '/breathing'),
+            ),
+            _buildToolCard(
+              context,
+              title: l10n?.translate('therapist_evaluation') ?? 'Therapist Evaluation',
+              subtitle: l10n?.translate('review_your_progress') ?? 'Review your progress and notes',
+              icon: Icons.health_and_safety,
+              color: AppUI.purpleSecondary,
+              onTap: () => Navigator.pushNamed(context, '/therapist-evaluation'),
+            ),
+            _buildToolCard(
+              context,
+              title: l10n?.translate('relaxation_audio') ?? 'Relaxation Audio',
+              subtitle: l10n?.translate('listen_relaxing_tracks') ?? 'Listen to calming audio',
+              icon: Icons.headphones,
+              color: AppUI.purpleAccent,
+              onTap: () => Navigator.pushNamed(context, '/relaxation-audio'),
+            ),
+            _buildToolCard(
+              context,
+              title: l10n?.translate('progress_dashboard') ?? 'Progress Dashboard',
+              subtitle: l10n?.translate('view_activity_trends') ?? 'View your wellness progress',
+              icon: Icons.bar_chart,
+              color: AppUI.purpleDark,
+              onTap: () => Navigator.pushNamed(context, '/progress-dashboard'),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildToolCard(
+    BuildContext context, {
+    required String title,
+    required String subtitle,
+    required IconData icon,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    return AppUI.card(
+      padding: const EdgeInsets.all(18),
+      onTap: onTap,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              color: color.withOpacity(0.15),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(icon, color: color, size: 22),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            title,
+            style: AppUI.headingSmall.copyWith(fontSize: 15),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            subtitle,
+            style: AppUI.captionText,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
       ),
     );
   }

@@ -5,16 +5,20 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
-import 'backend/firebase.dart';
-import 'backend/language_provider.dart';
-import 'frontend/home.dart';
-import 'frontend/profile.dart';
-import 'frontend/welcome.dart';
-import 'frontend/login.dart';
-import 'frontend/ui.dart';
-import 'icons/user_sessions_screen.dart';
-import '../backend/app_localizations.dart';
-import 'icons/vr_environments_screen.dart';
+import 'firebase.dart';
+import 'language_provider.dart';
+import 'home.dart';
+import 'profile.dart';
+import 'welcome.dart';
+import 'login.dart';
+import 'ui.dart';
+import 'user_sessions_screen.dart';
+import 'app_localizations.dart';
+import 'vr_environments_screen.dart';
+import 'breathing_exercise_screen.dart';
+import 'therapist_evaluation_screen.dart';
+import 'relaxation_audio_screen.dart';
+import 'progress_dashboard_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -105,6 +109,10 @@ class MyApp extends StatelessWidget {
               '/profile': (context) => const ProfileScreen(),
               '/sessions-history': (context) => const UserSessionsScreen(),
               '/vr-environments': (context) => const VREnvironmentsScreen(),
+              '/breathing': (context) => const BreathingExerciseScreen(),
+              '/therapist-evaluation': (context) => const TherapistEvaluationScreen(),
+              '/relaxation-audio': (context) => const RelaxationAudioScreen(),
+              '/progress-dashboard': (context) => const ProgressDashboardScreen(),
             },
             onUnknownRoute: (settings) {
               return MaterialPageRoute(

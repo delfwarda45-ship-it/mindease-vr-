@@ -2,9 +2,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../backend/firebase.dart';
-import '../backend/app_localizations.dart';
-import '../backend/language_provider.dart';
+import 'firebase.dart';
+import 'app_localizations.dart';
+import 'language_provider.dart';
 import 'ui.dart';
 
 class ProfileScreen extends StatefulWidget {

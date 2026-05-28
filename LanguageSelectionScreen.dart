@@ -1,9 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../backend/app_localizations.dart';
-import '../backend/language_provider.dart';
-import '../frontend/ui.dart';
+import 'app_localizations.dart';
+import 'language_provider.dart';
+import 'ui.dart';
 
 class LanguageSelectionScreen extends StatelessWidget {
   const LanguageSelectionScreen({Key? key}) : super(key: key);

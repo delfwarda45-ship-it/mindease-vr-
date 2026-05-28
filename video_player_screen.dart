@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../backend/firebase.dart';
-import '../frontend/ui.dart'; //
+import 'firebase.dart';
+import 'ui.dart';
 import 'environment.dart' as env;
 
 class VideoPlayerScreen extends StatefulWidget {
